@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+    <style>
+      .error{
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="hamdija-form" action="hamdija.php" method="post">
+      First name:<br>
+      <input type="text" name="firstname" required><br>
+      Last name:<br>
+      <input type="text" name="lastname" required>
+      <br>
+      Amount:<br>
+      <input type="number" name="amount" required>
+      <br>
+      Email:<br>
+      <input type="email" name="email">
+      <br>
+      <input type="submit">
+    </form>
+  </body>
+
+  <script>
+    $("#hamdija-form").validate({
+      rules: {
+        lastname: {
+          minlength: 2,
+          maxlength: 5
+        }
+      },
+      messages: {
+        lastname: {
+          required: "Hamdija de,der majke ti unesi prezime",
+          minlength: "Unesi der koje slovo",
+          maxlength: "Precero si hamdija"
+        }
+      },
+      submitHandler: function(form) {
+        if (confirm('Jesi fakat fakat fakat siguran da hoces da submitas????')){
+          console.log(form);
+          form.submit();
+        }else{
+          alert('Dobro ne moras odmah psovati');
+        }
+      }
+    });
+  </script>
+</html>
